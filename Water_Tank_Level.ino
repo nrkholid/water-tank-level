@@ -7,8 +7,8 @@
 #define MAX_DISTANCE 250 //Maksimum Pembacaan Jarak (cm)
 #define pinCH_1 D1
 
-const char* ssid = "KILLUA"; //masukkan ssid
-const char* password = "nada124@"; //masukkan password     
+const char* ssid = "Your SSID"; //masukkan ssid
+const char* password = "Your Wi-Fi Password"; //masukkan password     
 
 int state;
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); //Setup Pin HC-SR04 dan Jarak Pembacaan dengan Fungsi Library
@@ -35,8 +35,8 @@ void loop() {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
     HTTPClient http1;
-    http.begin("http://192.168.1.7/air/data-api.php?nilai=" + String(jarak));
-    http1.begin("http://192.168.1.7/air/proses.php"); 
+    http.begin("http://192.168.1.7/air/data-api.php?nilai=" + String(jarak)); //Your IP Laptop
+    http1.begin("http://192.168.1.7/air/proses.php"); //Your IP Laptop
     int httpCode = http.GET();
     int httpCode1 = http1.GET();
     if (httpCode || httpCode1 > 0) {
